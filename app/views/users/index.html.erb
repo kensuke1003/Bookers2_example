@@ -13,9 +13,7 @@
     </tr>
   </tbody>
 </table>
-  
-  
-  
+
 <h1>New book</h1>
 <%= form_with model: @book, local:true do |f| %>
   <h4>Title</h4>
@@ -25,17 +23,3 @@
   <%= f.submit 'Create Book' %>
 <% end %>
 
-<table>
-  <h2>Book detail</h2>
-    <tr>
-      <td><%= @book.title %></td>
-      <td><%= @book.body %></td>
-    </tr>
-</table>
-<% if @book.user == current_user %>
-    <%= link_to "Edit", edit_book_path %>
-  <% end %>
-
-<% if @book.user == current_user %>
-    <%= link_to "Destroy", book_path(@book), method: :delete %>
-  <% end %>
