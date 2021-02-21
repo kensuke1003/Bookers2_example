@@ -6,3 +6,6 @@
   <%= f.text_area :body %>
   <%= f.submit 'Update Book' %>
 <% end %>
+
+<%= link_to 'edit', edit_book_path(@book.id) %>
+<%= link_to 'back', books_path %>
