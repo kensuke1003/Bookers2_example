@@ -9,6 +9,7 @@ class UsersController < ApplicationController
     @books = Book.all
     @users = User.all
     @user = current_user
+    @book = Book.new #渡す値を設定
   end
 
   def edit
@@ -23,6 +24,8 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @books = Book.where(user_id:params[:id])
+    @book = Book.new
   end
 
   private

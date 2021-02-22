@@ -12,6 +12,7 @@ class BooksController < ApplicationController
 
   def create
     @book = Book.new(book_params)
+    
     @book.user_id = current_user.id  #紐付け
     if @book.save
       flash[:notice] = 'Book was successfully created.'
@@ -35,7 +36,6 @@ class BooksController < ApplicationController
       render :edit
     end
   end
-  end
 
   def destroy
     @book = Book.find(params[:id])
@@ -49,4 +49,4 @@ class BooksController < ApplicationController
   def book_params
     params.require(:book).permit(:title, :body)
   end
-
+end
