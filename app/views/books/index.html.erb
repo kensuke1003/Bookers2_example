@@ -1,20 +1,18 @@
-
-<!--<h2>User info</h2>-->
-<!--<%= attachment_image_tag @user, :profile_image %>-->
-<!--<table class="table">-->
-<!--  <tbody>-->
-<!--    <tr></tr>-->
-<!--    <tr>-->
-<!--      <th>name</th>-->
-<!--      <th><%= @user.name %></th>-->
-<!--    </tr>-->
-<!--      <tr>-->
-<!--      <th>introduction</th>-->
-<!--      <th><%= @user.introduction %></th>-->
-<!--    </tr>-->
-<!--  </tbody>-->
-<!--</table>-->
-  
+<h2>User info</h2>
+<%= attachment_image_tag @user, :profile_image, :fill, 100, 100, fallback: "no_image.jpg" %></p>
+<table class="table">
+  <tbody>
+    <tr></tr>
+    <tr>
+      <th>name</th>
+      <th><%= @user.name %></th>
+    </tr>
+      <tr>
+      <th>introduction</th>
+      <th><%= @user.introduction %></th>
+    </tr>
+  </tbody>
+</table>
   
   
 <h1>Books</h1>
@@ -30,6 +28,9 @@
     </tr>
   <% end %>
 </table>
+<% if @user.id == current_user.id %>
+    <p><%= link_to "プロフィール編集", edit_user_path(@user) %></p>
+  <% end %>
 
 <h1>New book</h1>
 <%= form_with model: @book, local:true do |f| %>
