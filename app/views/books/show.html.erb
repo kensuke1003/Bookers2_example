@@ -15,6 +15,7 @@
         <td><%= @book.title %></td>
         <td><%= @book.body %></td>
       </tr>
+      
     </table>
 <% if @book.user == current_user %>
     <%= link_to "Edit", edit_book_path %>
