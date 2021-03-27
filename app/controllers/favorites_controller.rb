@@ -1,17 +1,17 @@
 class FavoritesController < ApplicationController
   
   def create
-     = PostImage.find(params[:post_image_id])
-    favorite = current_user.favorites.new(post_image_id: post_image.id)
+    book= Book.find(params[:book_id])
+    favorite = book.favorites.new(user_id: current_user.id)
     favorite.save
-    redirect_to books_path
+    redirect_to request.referer
   end
   
   def destroy
-    post_image = PostImage.find(params[:post_image_id])
-    favorite = current_user.favorites.new(post_image_id: post_image.id)
-    favorite.save
-    redirect_to books_path
+    book = Book.find(params[:book_id])
+    favorite = current_user.favorites.find_by(book_id: book.id)
+    favorite.destroy
+    redirect_to request.referer
   end
   
   
